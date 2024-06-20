@@ -21,27 +21,19 @@ function ProgramPage() {
 
   useEffect(() => {
     const liAll = document.querySelectorAll(".under li");
-    function garisBawah() {
-      const liOne = document.querySelector(".under li:nth-child(1)");
-      const liTwo = document.querySelector(".under li:nth-child(2)");
-      const liThree = document.querySelector(".under li:nth-child(3)");
-      if (liOne.classList.contains("before:underscore")) {
-        liOne.classList.remove("before:underscore");
-      } else if (liTwo.classList.contains("before:underscore")) {
-        liTwo.classList.remove("before:underscore");
-      } else if (liThree.classList.contains("before:underscore")) {
-        liThree.classList.remove("before:underscore");
-      } else {
-        this.classList.add("before:underscore");
-      }
-    }
     liAll.forEach((ele) => {
-      ele.addEventListener("click", garisBawah);
-
-      return () => {
-        ele.removeEventListener("click", garisBawah);
-      };
+      ele.addEventListener("click", function () {
+        liAll.forEach((num) =>
+          num.classList.contains("before:underscore")
+            ? num.classList.remove("before:underscore")
+            : null
+        );
+        this.classList.add("before:underscore");
+      });
     });
+    return () => {
+      liAll.forEach((cls) => cls.removeEventListener("click", () => {}));
+    };
   }, []);
 
   return (
