@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import "./index.css";
-import AboutUs from "./AboutUs";
-import ProgramLpk from "./ProgramLPK";
-import GalleryPage from "./Gallery";
-import FormPendaftaran from "./Pendaftaran";
+import AboutUs from "./Pages/AboutUs";
+import ProgramLpk from "./Pages/ProgramLPK";
+import GalleryPage from "./Pages/Gallery";
+import FormPendaftaran from "./Pages/Pendaftaran";
 
 const router = createBrowserRouter([
   {

@@ -1,50 +1,43 @@
 import { useState } from "react";
-import Header from "./layout/Header";
-import Footer from "./layout/Footer";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 export default function FormPendaftaran() {
-  return (
-    <>
-      <Header />
-      <WelcomePendaftaran />
-      <Footer />
-    </>
-  );
-}
-
-function WelcomePendaftaran() {
   const [isHandleNext, setIsHandleNext] = useState(null);
   function handleClickNext(click) {
     setIsHandleNext(click);
   }
-
   return (
-    <section>
-      <div className="bg-gradient-to-t from-[#549DBB] to-sky-200 pt-32">
-        <div className="w-[95%] mx-auto">
-          <h1 className="text-2xl font-semibold text-center max-[640px]:text-xl sm:text-2xl">
-            Selamat Datang Di Form Pendaftaran Online LPK Candra Putra Lestari
-          </h1>
-          <div className="mt-7">
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-              reprehenderit totam soluta neque ab rem aliquam eum quia dicta
-              voluptatum illum laboriosam, vel a. Iusto iste incidunt similique
-              labore magnam.
-            </p>
-            <div>
-              {isHandleNext === "datadiri" ? (
-                <DataDiri handleClickNext={handleClickNext} />
-              ) : isHandleNext === "uploadBerkas" ? (
-                <UploadBerkas handleClickNext={handleClickNext} />
-              ) : (
-                <DownloadBerkas handleClickNext={handleClickNext} />
-              )}
+    <>
+      <Header />
+      <section>
+        <div className="bg-gradient-to-t from-[#549DBB] to-sky-200 pt-32">
+          <div className="w-[95%] mx-auto">
+            <h1 className="text-2xl font-semibold text-center max-[640px]:text-xl sm:text-2xl">
+              Selamat Datang Di Form Pendaftaran Online LPK Candra Putra Lestari
+            </h1>
+            <div className="mt-7">
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
+                reprehenderit totam soluta neque ab rem aliquam eum quia dicta
+                voluptatum illum laboriosam, vel a. Iusto iste incidunt
+                similique labore magnam.
+              </p>
+              <div>
+                {isHandleNext === "datadiri" ? (
+                  <DataDiri handleClickNext={handleClickNext} />
+                ) : isHandleNext === "uploadBerkas" ? (
+                  <UploadBerkas handleClickNext={handleClickNext} />
+                ) : (
+                  <DownloadBerkas handleClickNext={handleClickNext} />
+                )}
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <Footer />
+    </>
   );
 }
 

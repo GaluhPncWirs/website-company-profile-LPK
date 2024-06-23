@@ -1,19 +1,8 @@
 import { useEffect, useState } from "react";
-import Header from "./layout/Header";
-import Footer from "./layout/Footer";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 export default function ProgramLpk() {
-  return (
-    <>
-      <Header />
-      <ProgramPage />
-      <GetBenefit />
-      <Footer />
-    </>
-  );
-}
-
-function ProgramPage() {
   const [isProgram, setIsProgram] = useState(null);
   function handleProgram(clickProgram) {
     setIsProgram(clickProgram);
@@ -21,44 +10,47 @@ function ProgramPage() {
 
   useEffect(() => {
     const liAll = document.querySelectorAll(".under li");
-    liAll.forEach((ele) => {
-      ele.addEventListener("click", function () {
-        liAll.forEach((num) =>
-          num.classList.contains("before:underscore")
-            ? num.classList.remove("before:underscore")
-            : null
-        );
-        this.classList.add("before:underscore");
+    function handleSwitch() {
+      liAll.forEach((ele) => {
+        ele.classList.remove("before:underscore");
       });
-    });
+      this.classList.add("before:underscore");
+    }
+
+    liAll.forEach((element) => element.addEventListener("click", handleSwitch));
+
     return () => {
-      liAll.forEach((cls) => cls.removeEventListener("click", () => {}));
+      liAll.forEach((cls) => cls.removeEventListener("click", handleSwitch));
     };
   }, []);
-
   return (
-    <main>
-      <div className="pt-32 bg-gradient-to-t from-indigo-300 to-slate-200">
-        <div className="w-[95%] mx-auto">
-          <div>
-            <h1 className="text-center max-w-4xl mx-auto font-bold sm:text-xl lg:text-2xl max-[640px]:text-xl">
-              Bangun pondasi karir yang kokoh dengan menggabungkan kekuatan
-              teknis, keterampilan praktis, dan kemahiran bahasa Jepang
-            </h1>
-            <NavProgram handleProgram={handleProgram} />
-          </div>
-          <div>
-            {isProgram === "tokuteiGinou" ? (
-              <DescTokutei />
-            ) : isProgram === "nihonggoGakko" ? (
-              <DescNihinggo />
-            ) : (
-              <DescIntern />
-            )}
+    <>
+      <Header />
+      <main>
+        <div className="pt-32 bg-gradient-to-t from-indigo-300 to-slate-200">
+          <div className="w-[95%] mx-auto">
+            <div>
+              <h1 className="text-center max-w-4xl mx-auto font-bold sm:text-xl lg:text-2xl max-[640px]:text-xl">
+                Bangun pondasi karir yang kokoh dengan menggabungkan kekuatan
+                teknis, keterampilan praktis, dan kemahiran bahasa Jepang
+              </h1>
+              <NavProgram handleProgram={handleProgram} />
+            </div>
+            <div>
+              {isProgram === "tokuteiGinou" ? (
+                <DescTokutei />
+              ) : isProgram === "nihonggoGakko" ? (
+                <DescNihinggo />
+              ) : (
+                <DescIntern />
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </main>
+      </main>
+      <GetBenefit />
+      <Footer />
+    </>
   );
 }
 

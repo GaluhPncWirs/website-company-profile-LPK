@@ -1,76 +1,83 @@
-import Footer from "./layout/Footer";
-import Header from "./layout/Header";
+import Footer from "../layout/Footer";
+import Header from "../layout/Header";
 
 export default function AboutUs() {
   return (
     <>
       <Header />
-      <OwnerLpk />
+      <section>
+        <div className="pt-20 bg-gradient-to-t from-gray-300 to-[#549DBB]">
+          <div className="w-[95%] mx-auto">
+            <div className="pt-12">
+              <h1 className="text-center font-bold md:text-4xl lg:text-4xl xl:text-4xl mb-20 max-[640px]:mb-14 sm:mb-16 text-3xl">
+                About Us
+              </h1>
+              <Direktur
+                imgDirectur="/img/pak_eki.jpg"
+                namaOwner="Eki Candra"
+                jabatan="DIREKTUR UTAMA"
+                komp="N2"
+                karir="Magang Di jepang Selama 3 tahun, Manager di perusahaan Jepang yang ada di Indonesia 13 tahun"
+              />
+              <Direktur
+                imgDirectur="/img/pak_eki.jpg"
+                namaOwner="Eis Saputra"
+                jabatan="DIREKTUR"
+                komp="N1"
+                karir="Penerjemah di beberapa perusahaan yang ada Jepang, Bekerja di perusahaan jepang 5 tahun"
+              />
+            </div>
+            <div className="pt-20">
+              <h1 className="text-center font-semibold text-2xl ">
+                Mengapa Harus Memilih Kami ?
+              </h1>
+              <WhoWeUs />
+              <div className="w-[90%] mx-auto pt-10">
+                <h3 className="font-semibold text-center text-xl">
+                  LPK OHAYO NIPPON Indonesia meyakini bahwa Program Pengembangan
+                  Usaha Mandiri melalui Pemagangan ke Jepang dapat memberi
+                  manfaat, di antara lain.
+                </h3>
+                <Benefit />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
       <LegalitasLpk />
       <Footer />
     </>
   );
 }
 
-function OwnerLpk() {
+function Direktur(props) {
+  const { imgDirectur, namaOwner, jabatan, komp, karir } = props;
   return (
-    <section>
-      <div className="pt-20 bg-gradient-to-t from-gray-300 to-[#549DBB]">
-        <div className="w-[95%] mx-auto">
-          <div className="pt-12">
-            <h1 className="text-center font-bold md:text-4xl lg:text-4xl xl:text-4xl mb-20 max-[640px]:mb-14 sm:mb-16 text-3xl">
-              About Us
-            </h1>
-            <Dirut />
-            <Direktur />
-          </div>
-          <div className="pt-20">
-            <h1 className="text-center font-semibold text-2xl ">
-              Mengapa Harus Memilih Kami ?
-            </h1>
-            <WhoWeUs />
-            <div className="w-[90%] mx-auto pt-10">
-              <h3 className="font-semibold text-center text-xl">
-                LPK OHAYO NIPPON Indonesia meyakini bahwa Program Pengembangan
-                Usaha Mandiri melalui Pemagangan ke Jepang dapat memberi
-                manfaat, di antara lain.
-              </h3>
-              <Benefit />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function Dirut() {
-  return (
-    <div className="flex max-[640px]:flex-col sm:flex-col md:flex-row">
+    <div
+      className={`flex max-[640px]:flex-col sm:flex-col ${
+        namaOwner === "Eki Candra" ? `md:flex-row` : `md:flex-row-reverse mt-20`
+      }`}
+    >
       <div className="basis-2/5 flex justify-center items-center">
         <img
-          src="/img/pak_eki.jpg"
-          alt="foto_pemilik_lembaga"
+          src={imgDirectur}
           className="md:w-[90%] rounded-2xl max-[640px]:w-2/3 sm:w-3/4"
         />
       </div>
       <div className="basis-3/5">
         <div className="my-5 font-medium before:garis-bawah relative">
-          <h3>Eki Candra</h3>
-          <h2 className="text-lg mb-3">DIREKTUR UTAMA</h2>
+          <h3>{namaOwner}</h3>
+          <h2 className="text-lg mb-3">{jabatan}</h2>
         </div>
         <div className="text-base mt-7 text-justify">
           <ul>
             <li>
               <span className="font-semibold block text-lg">Kompetensi</span>
-              N2
+              {komp}
             </li>
             <li>
               <span className="font-semibold block text-lg">Karir</span>
-              Magang Di jepang Selama 3 tahun{" "}
-              <span className="block">
-                Manager di perusahaan Jepang yang ada di Indonesia 13 tahun
-              </span>
+              {karir}
             </li>
             <li>
               <span className="font-semibold block text-lg">
@@ -90,86 +97,6 @@ function Dirut() {
         </div>
       </div>
     </div>
-  );
-}
-
-function Direktur() {
-  return (
-    <div className="flex max-[640px]:flex-col sm:flex-col md:flex-row-reverse mt-20">
-      <div className="basis-2/5 flex justify-center items-center">
-        <img
-          src="/img/pak_eki.jpg"
-          alt="foto_pemilik_lembaga"
-          className="md:w-[90%] rounded-2xl max-[640px]:w-2/3 sm:w-3/4"
-        />
-      </div>
-      <div className="basis-3/5">
-        <div className="my-5 font-medium before:garis-bawah relative">
-          <h3>Eis Saputra</h3>
-          <h2 className="text-lg mb-3">DIREKTUR</h2>
-        </div>
-        <div className="text-base mt-7 text-justify">
-          <ul>
-            <li>
-              <span className="font-semibold block text-lg">Kompetensi</span>
-              N1
-            </li>
-            <li>
-              <span className="font-semibold block text-lg">Karir</span>
-              Penerjemah di beberapa perusahaan yang ada Jepang{" "}
-              <span className="block">
-                Bekerja di perusahaan jepang 5 tahun
-              </span>
-            </li>
-            <li>
-              <span className="font-semibold block text-lg">
-                Alasan Mendirikan LPK
-              </span>
-              memberikan kesempatan kepada generasi muda yang ada di Indonesia,
-              untuk bisa menimbah ilmu sebanyak banyak nya di Negara Maju
-              sekaligus memperbaiki perekonomian keluarga dengan bekerja di
-              Jepang.{" "}
-            </li>
-            <li>
-              <span className="font-semibold block text-lg">Motto hidup</span>
-              Setiap Kesulitan pasti ada kemudahan, Setiap masalah pasti ada
-              solusi
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-function LegalitasLpk() {
-  return (
-    <section>
-      <div className="bg-gradient-to-t from-[#549DBB] to-gray-300 pt-20">
-        <div className="w-[95%] mx-auto">
-          <h1 className="pb-16 text-center text-3xl font-semibold">
-            Legalitas Perusahaan
-          </h1>
-          <div className="flex justify-center gap-14 flex-wrap">
-            <img
-              src="/img/legalitas_perusahaan_ke1.png"
-              alt="legalitas perusahaan"
-              className="block w-2/5 shadow-xl shadow-slate-600"
-            />
-            <img
-              src="/img/legalitas_usaha2.jpg"
-              alt="legalitas perusahaan 2"
-              className="block w-2/5 shadow-xl shadow-slate-600"
-            />
-            <img
-              src="/img/legalitas_usaha3.jpg"
-              alt="legalitas perusahaan 3"
-              className="block w-1/2 shadow-xl shadow-slate-600"
-            />
-          </div>
-        </div>
-      </div>
-    </section>
   );
 }
 
@@ -230,5 +157,43 @@ function Benefit() {
         Meningkatkan daya saing produk nasional pada pasar Internasional
       </li>
     </ul>
+  );
+}
+
+function LegalitasLpk() {
+  const legalitas = [
+    {
+      id: 1,
+      src: "/img/legalitas_perusahaan_ke1.png",
+    },
+    {
+      id: 2,
+      src: "/img/legalitas_usaha2.jpg",
+    },
+    {
+      id: 3,
+      src: "/img/legalitas_usaha3.jpg",
+    },
+  ];
+  return (
+    <section>
+      <div className="bg-gradient-to-t from-[#549DBB] to-gray-300 pt-20">
+        <div className="w-[95%] mx-auto">
+          <h1 className="pb-16 text-center text-3xl font-semibold">
+            Legalitas Perusahaan
+          </h1>
+          <div className="flex justify-center gap-14 flex-wrap">
+            {legalitas.map((source) => (
+              <img
+                key={source.id}
+                src={source.src}
+                alt="legalitas perusahaan"
+                className="block w-2/5 shadow-xl shadow-slate-600"
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

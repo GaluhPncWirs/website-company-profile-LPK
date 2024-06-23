@@ -1,48 +1,42 @@
 import { useState } from "react";
-import Header from "./layout/Header";
-import Footer from "./layout/Footer";
+import Header from "../layout/Header";
+import Footer from "../layout/Footer";
 
 export default function GalleryPage() {
-  return (
-    <>
-      <Header />
-      <GalleryHeader />
-      <Footer />
-    </>
-  );
-}
-
-function GalleryHeader() {
   const [isGallery, setIsGallery] = useState(null);
   function handleClickGallery(clicked) {
     setIsGallery(clicked);
   }
   return (
-    <section>
-      <div className="bg-gradient-to-t from-[#549DBB] to-emerald-200 pt-32">
-        <div className="w-[95%] mx-auto">
-          <h1 className="text-3xl font-semibold text-center mb-5 md:text-3xl lg:text-4xl xl:text-4xl">
-            Gallery
-          </h1>
-          <p className="font-normal text-center mb-10 max-[640px]:text-base sm:text-base md:text-xl">
-            Dokumentasi mencakup kegiatan, pemberangkatan, dan fasilitas dari
-            LPK Candra Putra Lestari.
-          </p>
-          <br />
-          <SwitchGallery onHandleClickGallery={handleClickGallery} />
+    <>
+      <Header />
+      <section>
+        <div className="bg-gradient-to-t from-[#549DBB] to-emerald-200 pt-32">
+          <div className="w-[95%] mx-auto">
+            <h1 className="text-3xl font-semibold text-center mb-5 md:text-3xl lg:text-4xl xl:text-4xl">
+              Gallery
+            </h1>
+            <p className="font-normal text-center mb-10 max-[640px]:text-base sm:text-base md:text-xl">
+              Dokumentasi mencakup kegiatan, pemberangkatan, dan fasilitas dari
+              LPK Candra Putra Lestari.
+            </p>
+            <br />
+            <SwitchGallery onHandleClickGallery={handleClickGallery} />
 
-          <div>
-            {isGallery === "Pemberangkatan" ? (
-              <ImagesPemberangkatan />
-            ) : isGallery === "Fasilitas" ? (
-              <ImagesFasilitas />
-            ) : (
-              <ImagesKegiatan />
-            )}
+            <div>
+              {isGallery === "Pemberangkatan" ? (
+                <ImagesPemberangkatan />
+              ) : isGallery === "Fasilitas" ? (
+                <ImagesFasilitas />
+              ) : (
+                <ImagesKegiatan />
+              )}
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+      <Footer />
+    </>
   );
 }
 
